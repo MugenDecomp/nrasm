@@ -105,6 +105,8 @@ rel
 short
 strict
 to
+mrmb
+mrmd
 
 # PTR is a legitimate symbol, but has an optional warning
 % TOKEN_ID, 0, TFLAG_WARN, 0

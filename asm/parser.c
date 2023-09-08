@@ -900,6 +900,12 @@ restart_parse:
             case S_SHORT:
                 op->type |= SHORT;
                 break;
+            case S_MRMB:
+                op->type |= MRMB;
+                break;
+            case S_MRMD:
+                op->type |= MRMD;
+                break;
             default:
                 nasm_nonfatal("invalid operand size specification");
             }

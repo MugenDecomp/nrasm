@@ -1230,6 +1230,8 @@ enum special_tokens {
     S_SHORT,
     S_STRICT,
     S_TO,
+    S_MRMB,
+    S_MRMD,
     SPECIAL_ENUM_LIMIT
 };
 

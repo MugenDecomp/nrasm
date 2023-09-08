@@ -129,6 +129,16 @@
 #define GEN_REGSET(bit)         OP_GENBIT(bit, REGSET_SHIFT)
 
 /*
+ * ModR/M override property
+ *
+ * Bits: 49 - 50
+ */
+#define MODRM_SHIFT             (49)
+#define MODRM_BITS              (2)
+#define MODRM_MASK              OP_GENMASK(MODRM_BITS, MODRM_SHIFT)
+#define GEN_MODRMBIT(bit)       OP_GENBIT(bit, MODRM_SHIFT)
+
+/*
  * Bits distribution (counted from 0)
  *
  *    6         5         4         3         2         1
@@ -297,5 +307,9 @@ static inline bool is_reg_class(opflags_t class, opflags_t reg)
 #define RS8                     GEN_REGSET(2)
 #define RS16                    GEN_REGSET(3)
 #define RS32                    GEN_REGSET(4)
+
+/* ModRM overrides */
+#define MRMB                    GEN_MODRMBIT(0)                 /* always apply 1-byte ModR/M offset */
+#define MRMD                    GEN_MODRMBIT(1)                 /* always apply 4-byte ModR/M offset */
 
 #endif /* NASM_OPFLAGS_H */
