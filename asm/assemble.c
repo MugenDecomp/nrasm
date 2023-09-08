@@ -1632,6 +1632,9 @@ static int64_t calcsize(int32_t segment, int64_t offset, int bits,
                 if (itemp_has(temp, IF_SIB))
                     opy->eaflags |= EAF_SIB;
 
+                if (itemp_has(temp, IF_FORCEOFFS))
+                    opy->eaflags |= EAF_FORCEOFFS;
+
                 if (process_ea(opy, &ea_data, bits,
                                rfield, rflags, ins, eat, &errmsg)) {
                     nasm_nonfatal("%s", errmsg);
@@ -3148,6 +3151,15 @@ static int process_ea(operand *input, ea *output, int bits,
                             mod = 1;
                         else
                             mod = 2;
+                    }
+
+                    /* NRASM MugenDecomp offset hack.
+                     * Forces mod to 1 when it should be 0 to match behaviour for specific insns.
+                     * Applied to: LEA
+                     */
+                    if (mod == 0 && (eaflags & EAF_FORCEOFFS)) {
+                        //printf("Forced mod to 1\n");
+                        mod = 1;
                     }
 
                     output->sib_present = false;

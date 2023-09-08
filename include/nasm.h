@@ -617,7 +617,8 @@ enum ea_flags { /* special EA flags */
     EAF_ABS         =  16,  /* non-IP-relative addressing */
     EAF_FSGS        =  32,  /* fs/gs segment override present */
     EAF_MIB         =  64,  /* mib operand */
-    EAF_SIB         = 128   /* SIB encoding obligatory */
+    EAF_SIB         = 128,  /* SIB encoding obligatory */
+    EAF_FORCEOFFS   = 256   /* Force offset present even if zero */
 };
 
 enum eval_hint { /* values for `hinttype' */

@@ -24,6 +24,7 @@ if_("AR3",               "SB, SW, SD applies to argument 3");
 if_("AR4",               "SB, SW, SD applies to argument 4");
 if_("OPT",               "Optimizing assembly only");
 if_("LATEVEX",            "Only if EVEX instructions are disabled");
+if_("FORCEOFFS",         "Force RM to include 1-byte offset if not present");
 
 #
 # dword bound - instruction feature filtering flags

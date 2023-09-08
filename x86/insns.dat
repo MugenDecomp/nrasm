@@ -733,7 +733,7 @@ LAR		reg64,reg64			[rm:	o64 0f 02 /r]				X86_64,LONG,PROT
 LDS		reg16,mem			[rm:	o16 c5 /r]				8086,NOLONG
 LDS		reg32,mem			[rm:	o32 c5 /r]				386,NOLONG
 LEA		reg16,mem			[rm:	o16 8d /r]				8086,ANYSIZE
-LEA		reg32,mem			[rm:	o32 8d /r]				386,ANYSIZE
+LEA		reg32,mem			[rm:	o32 8d /r]				386,ANYSIZE,FORCEOFFS
 LEA		reg64,mem			[rm:	o64 8d /r]				X86_64,LONG,ANYSIZE
 LEA		reg16,imm			[rm:	o16 8d /r]				8086,ND,ANYSIZE
 LEA		reg32,imm			[rm:	o32 8d /r]				386,ND,ANYSIZE
@@ -843,7 +843,6 @@ MOV		reg8,reg8			[mr:	88 /r]					8086
 MOV		mem,reg16			[mr:	hlexr o16 89 /r]			8086,SM
 MOV		reg16,reg16			[mr:	o16 89 /r]				8086
 MOV		mem,reg32			[mr:	hlexr o32 89 /r]			386,SM
-MOV		reg32,reg32			[mr:	o32 89 /r]				386
 MOV		mem,reg64			[mr:	hlexr o64 89 /r]			X86_64,LONG,SM
 MOV		reg64,reg64			[mr:	o64 89 /r]				X86_64,LONG
 MOV		reg8,mem			[rm:	8a /r]					8086,SM
@@ -854,6 +853,7 @@ MOV		reg32,mem			[rm:	o32 8b /r]				386,SM
 MOV		reg32,reg32			[rm:	o32 8b /r]				386
 MOV		reg64,mem			[rm:	o64 8b /r]				X86_64,LONG,SM
 MOV		reg64,reg64			[rm:	o64 8b /r]				X86_64,LONG
+MOV		reg32,reg32			[mr:	o32 89 /r]				386
 MOV		reg8,imm			[ri:	b0+r ib]				8086,SM
 MOV		reg16,imm			[ri:	o16 b8+r iw]				8086,SM
 MOV		reg32,imm			[ri:	o32 b8+r id]				386,SM
@@ -1478,7 +1478,6 @@ XOR		reg8,reg8			[mr:	30 /r]					8086
 XOR		mem,reg16			[mr:	hle o16 31 /r]				8086,SM,LOCK
 XOR		reg16,reg16			[mr:	o16 31 /r]				8086
 XOR		mem,reg32			[mr:	hle o32 31 /r]				386,SM,LOCK
-XOR		reg32,reg32			[mr:	o32 31 /r]				386
 XOR		mem,reg64			[mr:	hle o64 31 /r]				X86_64,LONG,SM,LOCK
 XOR		reg64,reg64			[mr:	o64 31 /r]				X86_64,LONG
 XOR		reg8,mem			[rm:	32 /r]					8086,SM
@@ -1487,6 +1486,7 @@ XOR		reg16,mem			[rm:	o16 33 /r]				8086,SM
 XOR		reg16,reg16			[rm:	o16 33 /r]				8086
 XOR		reg32,mem			[rm:	o32 33 /r]				386,SM
 XOR		reg32,reg32			[rm:	o32 33 /r]				386
+XOR		reg32,reg32			[mr:	o32 31 /r]				386
 XOR		reg64,mem			[rm:	o64 33 /r]				X86_64,LONG,SM
 XOR		reg64,reg64			[rm:	o64 33 /r]				X86_64,LONG
 XOR		rm16,imm8			[mi:	hle o16 83 /6 ib,s]			8086,LOCK
