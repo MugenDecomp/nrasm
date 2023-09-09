@@ -3210,6 +3210,20 @@ static int process_ea(operand *input, ea *output, int bits,
                             mod = 2;
                     }
 
+                    /* NRASM MugenDecomp offset hack.
+                     * Forces mod to 1 or 2 when it should be 0 to match behaviour for specific insns.
+                     * Applied to: LEA
+                     * Requires the `mrmb` or `mrmd` modifier on the operand.
+                     */
+                    if (mod == 0 && (eaflags & EAF_FORCEOFFS)) {
+                        if (input->type & MRMB) {
+                            printf("MRMB\n");
+                            mod = 1;
+                        } else if (input->type & MRMD) {
+                            mod = 2;
+                        }
+                    }
+
                     output->sib_present = true;
                     output->bytes       = (bt == -1 || mod == 2 ? 4 : mod);
                     output->modrm       = GEN_MODRM(mod, rfield, 4);
