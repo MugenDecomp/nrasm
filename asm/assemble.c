@@ -3217,7 +3217,6 @@ static int process_ea(operand *input, ea *output, int bits,
                      */
                     if (mod == 0 && (eaflags & EAF_FORCEOFFS)) {
                         if (input->type & MRMB) {
-                            printf("MRMB\n");
                             mod = 1;
                         } else if (input->type & MRMD) {
                             mod = 2;
