@@ -1929,7 +1929,6 @@ static void gencode(struct out_data *data, insn *ins)
         opx = &ins->oprs[op1];
         opex = 0;                /* For the next iteration */
 
-
         switch (c) {
         case 01:
         case 02:
