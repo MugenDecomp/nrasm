@@ -114,8 +114,6 @@ ADC		mem,imm16			[mi:	hle o16 81 /2 iw]			8086,SM,LOCK
 ADC		mem,sbytedword32		[mi:	hle o32 83 /2 ib,s]			386,SM,LOCK,ND
 ADC		mem,imm32			[mi:	hle o32 81 /2 id]			386,SM,LOCK
 ADC		rm8,imm				[mi:	hle 82 /2 ib]				8086,SM,LOCK,ND,NOLONG
-ADD		mem,reg8			[mr:	hle 00 /r]				8086,SM,LOCK
-ADD		reg8,reg8			[mr:	00 /r]					8086
 ADD		reg8,mem			[rm:	02 /r]					8086,SM
 ADD		reg8,reg8			[rm:	02 /r]					8086
 ADD		reg16,mem			[rm:	o16 03 /r]				8086,SM
@@ -124,6 +122,8 @@ ADD		reg32,mem			[rm:	o32 03 /r]				386,SM
 ADD		reg32,reg32			[rm:	o32 03 /r]				386
 ADD		reg64,mem			[rm:	o64 03 /r]				X86_64,LONG,SM
 ADD		reg64,reg64			[rm:	o64 03 /r]				X86_64,LONG
+ADD		mem,reg8			[mr:	hle 00 /r]				8086,SM,LOCK
+ADD		reg8,reg8			[mr:	00 /r]					8086
 ADD		mem,reg16			[mr:	hle o16 01 /r]				8086,SM,LOCK
 ADD		reg16,reg16			[mr:	o16 01 /r]				8086
 ADD		mem,reg32			[mr:	hle o32 01 /r]				386,SM,LOCK
